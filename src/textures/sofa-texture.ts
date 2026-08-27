@@ -1,5 +1,6 @@
-import { Asset, FILTER_LINEAR, FILTER_LINEAR_MIPMAP_LINEAR } from 'playcanvas';
+import { FILTER_LINEAR, FILTER_LINEAR_MIPMAP_LINEAR } from 'playcanvas';
 import type { AppBase, Texture } from 'playcanvas';
+
 import { loadAsset } from '../utils/loadasset';
 
 const sofaJPGUrl = new URL('../assets/textures/sofa.jpeg', import.meta.url).href;

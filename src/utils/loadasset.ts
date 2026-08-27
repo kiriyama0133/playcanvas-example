@@ -33,6 +33,7 @@ export const loadAsset = (app: AppBase, options: LoadAssetOptions) =>
         app.assets.add(asset);
         app.assets.load(asset);
         asset.ready(() => {
+            console.log(`Asset '${options.name}' loaded successfully.`);
             resolve(asset);
         });
     });
