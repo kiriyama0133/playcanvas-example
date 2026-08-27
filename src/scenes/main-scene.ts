@@ -2,7 +2,8 @@ import type { AppBase } from 'playcanvas';
 import { CameraFrame, Color, Entity, Vec3 } from 'playcanvas';
 import { CameraControls } from 'playcanvas/scripts/esm/camera-controls.mjs';
 
-import { createBoardBox } from '../components/box';
+import { createBoardBox, createMirrorBox } from '../components/box';
+import { createSearchLight } from '../components/searchlight';
 import { loadSofaGlb } from '../components/sofa-glb';
 
 export const buildMainScene = async (app: AppBase) => {
@@ -46,6 +47,13 @@ export const buildMainScene = async (app: AppBase) => {
     box.setPosition(1.05, 0.2, 0);
     box.setLocalScale(0.4, 0.4, 0.4);
     app.root.addChild(box);
+
+    const mirrorBox = await createMirrorBox(app);
+    mirrorBox.setPosition(-1.05, 0.2, 0);
+    mirrorBox.setLocalScale(0.4, 0.4, 0.4);
+    app.root.addChild(mirrorBox);
+
+    createSearchLight(app, new Vec3(-1.4, 1.3, 2.2), 50, new Color(1, 0.85, 0.55), 4, 6);
 
     const light = new Entity('light');
     light.addComponent('light');
