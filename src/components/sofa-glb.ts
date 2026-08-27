@@ -48,6 +48,8 @@ export const loadSofaGlb = (app: AppBase) =>
                 renders.forEach((render) => {
                     render.meshInstances?.forEach((meshInstance) => {
                         const material = meshInstance.material.clone() as StandardMaterial;
+                        material.emissive.set(1, 0.6, 0.2)
+                        material.emissiveIntensity = 0.2
                         material.diffuseMap = texture;
                         material.update();
                         meshInstance.material = material;
