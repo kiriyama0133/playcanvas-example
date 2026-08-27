@@ -2,8 +2,10 @@ import type { AppBase } from 'playcanvas';
 import { CameraFrame, Color, Entity, Vec3 } from 'playcanvas';
 import { CameraControls } from 'playcanvas/scripts/esm/camera-controls.mjs';
 
+import { createAnnotationManagerEntity } from '../components/annotation-hotspots';
 import { createBoardBox, createMirrorBox } from '../components/box';
 import { createSearchLight } from '../components/searchlight';
+import { attachSofaAnnotations } from '../components/sofa-annotations';
 import { loadSofaGlb } from '../components/sofa-glb';
 
 export const buildMainScene = async (app: AppBase) => {
@@ -29,8 +31,12 @@ export const buildMainScene = async (app: AppBase) => {
         }
     });
 
+    const annotationManager = createAnnotationManagerEntity();
+    app.root.addChild(annotationManager);
+
     const sofa = await loadSofaGlb(app);
-    app.root.addChild(sofa);
+    app.root.addChild(sofa.root);
+    attachSofaAnnotations(sofa.root);
 
     const sofaGlowLight = new Entity('sofa-glow-light');
     sofaGlowLight.addComponent('light', {

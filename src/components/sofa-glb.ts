@@ -20,8 +20,13 @@ const SOFA_GLB_TUNING = {
     yaw: 0
 } as const;
 
+export type SofaGlbInstance = {
+    root: Entity;
+    visual: Entity;
+};
+
 export const loadSofaGlb = (app: AppBase) =>
-    new Promise<Entity>((resolve, reject) => {
+    new Promise<SofaGlbInstance>((resolve, reject) => {
         const asset = new Asset('sofa-glb', 'container', {
             url: sofaUrl
         });
@@ -73,6 +78,6 @@ export const loadSofaGlb = (app: AppBase) =>
 
             yaw.addChild(visual);
             root.addChild(yaw);
-            resolve(root);
+            resolve({ root, visual });
         });
     });

@@ -18,6 +18,13 @@ declare module 'playcanvas/scripts/esm/sky/procedural-sky.mjs' {
     export const ProceduralSky: typeof Script & (new () => Script);
 }
 
+declare module 'playcanvas/scripts/esm/annotations.mjs' {
+    import type { Script } from 'playcanvas';
+
+    export const AnnotationManager: typeof Script & (new () => Script);
+    export const Annotation: typeof Script & (new () => Script);
+}
+
 declare module 'playcanvas/scripts/esm/parsers/obj-model.mjs' {
     import type { GraphicsDevice, ResourceParser } from 'playcanvas';
 
