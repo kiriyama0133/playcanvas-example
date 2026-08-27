@@ -15,6 +15,7 @@
         "typecheck": "tsc --noEmit"
     },
     "dependencies": {
+        "engine-app": "link:",
         "playcanvas": "^2.21.4"
     },
     "devDependencies": {

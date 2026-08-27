@@ -17,3 +17,20 @@ declare module 'playcanvas/scripts/esm/sky/procedural-sky.mjs' {
 
     export const ProceduralSky: typeof Script & (new () => Script);
 }
+
+declare module 'playcanvas/scripts/esm/parsers/obj-model.mjs' {
+    import type { GraphicsDevice, ResourceParser } from 'playcanvas';
+
+    export class ObjModelParser implements ResourceParser {
+        constructor(device: GraphicsDevice);
+        canParse(context: {
+            ext: string;
+        }): boolean;
+        load(
+            url: string | { load: string; original: string },
+            callback: (err: string | null, response?: any) => void,
+            asset?: any
+        ): void;
+        open?(url: string, data: any, asset?: any): any;
+    }
+}
